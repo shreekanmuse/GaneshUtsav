@@ -1,0 +1,1329 @@
+/* Import Premium Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Noto+Serif+Kannada:wght@400;700&display=swap');
+
+/* Style Variables - Modern Saturated Royal Palette */
+:root {
+  --royal-crimson-glow: #820010;  /* Vibrant Velvet Crimson Center */
+  --royal-crimson-dark: #4D0008;  /* Deep Rich Velvet Maroon */
+  --temple-black: #1B0003;        /* Dark Shadow Edge */
+  
+  --warm-ivory: #FFFBF2;        /* High-contrast Readable Content - 25% */
+  --cream-bg: #FFFDF7;          /* Minor supporting light background */
+  --antique-gold: #E5B842;      /* Highly Polished Modern Royal Gold - 15% */
+  --champagne-gold: #F5E2B3;    /* Bright Gold Highlights - 5% */
+  --dark-brown: #240003;        /* Rich Dark Maroon-Brown text accent */
+  
+  /* Metallic Golden Gradients */
+  --gold-gradient: linear-gradient(135deg, #FFF7D6 0%, #E5B842 50%, #A87D18 100%);
+  --gold-glow: 0 0 15px rgba(229, 184, 66, 0.45);
+  --shadow-dark: rgba(0, 0, 0, 0.65);
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0F0F0F;
+  color: var(--warm-ivory);
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ----------------------------------------- */
+/* Web UI Toolbar                            */
+/* ----------------------------------------- */
+.web-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--temple-black);
+  border-bottom: 2px solid var(--antique-gold);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+}
+
+.toolbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mandali-logo {
+  font-size: 28px;
+  color: var(--antique-gold);
+  text-shadow: var(--gold-glow);
+}
+
+.toolbar-title h1 {
+  font-family: 'Marcellus', serif;
+  font-size: 18px;
+  color: var(--antique-gold);
+  letter-spacing: 1px;
+}
+
+.toolbar-title p {
+  font-size: 11px;
+  color: var(--champagne-gold);
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--antique-gold);
+  color: var(--dark-brown);
+  border: 1px solid var(--antique-gold);
+  box-shadow: 0 2px 10px rgba(229, 184, 66, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--champagne-gold);
+  border-color: var(--champagne-gold);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--antique-gold);
+  border: 1px solid var(--antique-gold);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(229, 184, 66, 0.1);
+  color: var(--champagne-gold);
+  border-color: var(--champagne-gold);
+}
+
+/* ----------------------------------------- */
+/* Presentation Container                    */
+/* ----------------------------------------- */
+.pamphlet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 45px;
+  padding: 40px 20px;
+  background-color: #121212;
+  background-image: radial-gradient(circle, #202020 10%, transparent 11%);
+  background-size: 20px 20px;
+}
+
+/* ----------------------------------------- */
+/* Core Page Layout (A4 Portrait Poster Box) */
+/* ----------------------------------------- */
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: url('assets/images/background.jpg') no-repeat center center;
+  background-size: 100% 100%;
+  color: var(--warm-ivory);
+  position: relative;
+  overflow: hidden;
+  padding: 12mm 14mm 12mm 14mm; /* Padding sits perfectly inside background border */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 
+    0 20px 50px var(--shadow-dark), 
+    inset 0 0 40px rgba(0, 0, 0, 0.7);
+  page-break-after: always;
+  box-sizing: border-box;
+}
+
+/* Page Frame styling */
+.page-border {
+  position: absolute;
+  top: 5mm;
+  left: 5mm;
+  right: 5mm;
+  bottom: 5mm;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.page-border-inner {
+  display: none !important;
+}
+
+/* Corners */
+.corner {
+  display: none !important;
+}
+
+.corner-tl { top: -3px; left: -3px; }
+.corner-tr { top: -3px; right: -3px; }
+.corner-bl { bottom: -3px; left: -3px; }
+.corner-br { bottom: -3px; right: -3px; }
+
+.ornament-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Toran Garland */
+.temple-toran {
+  position: absolute;
+  top: 5mm;
+  left: 5mm;
+  right: 5mm;
+  height: 38px;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.toran-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.toran-svg-mini {
+  width: 100%;
+  height: 24px;
+}
+
+/* ----------------------------------------- */
+/* Page Header                               */
+/* ----------------------------------------- */
+.page-header {
+  text-align: center;
+  z-index: 20;
+  margin-top: 5mm;
+  margin-bottom: 2mm;
+}
+
+.mantra {
+  font-family: 'Noto Serif Kannada', 'Marcellus', serif;
+  font-size: 24px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.header-divider-poster {
+  text-align: center;
+}
+
+.star-motif {
+  font-size: 14px;
+  color: var(--antique-gold);
+  letter-spacing: 2.5px;
+  text-shadow: var(--gold-glow);
+  opacity: 0.95;
+}
+
+/* ----------------------------------------- */
+/* Page Footer                               */
+/* ----------------------------------------- */
+.page-footer {
+  text-align: center;
+  z-index: 20;
+  border-top: 1px solid rgba(229, 184, 66, 0.35);
+  padding-top: 4mm;
+  margin-bottom: 1mm;
+}
+
+.footer-text {
+  font-family: 'Marcellus', serif;
+  font-size: 14.5px;
+  color: var(--antique-gold);
+  letter-spacing: 8px;
+  font-weight: bold;
+  text-shadow: var(--gold-glow);
+}
+
+/* ----------------------------------------- */
+/* PAGE 1: COVER POSTER                      */
+/* ----------------------------------------- */
+.main-invitation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  z-index: 20;
+  text-align: center;
+  padding: 6mm 0;
+}
+
+.celebration-seal {
+  display: inline-block;
+  border: 1.5px solid var(--antique-gold);
+  border-radius: 4px;
+  padding: 4px 16px;
+  background-color: rgba(27, 0, 3, 0.75);
+  box-shadow: var(--gold-glow);
+  margin-bottom: 2mm;
+}
+
+.seal-inner {
+  font-family: 'Marcellus', serif;
+  font-size: 14.5px;
+  font-weight: bold;
+  color: var(--champagne-gold);
+  letter-spacing: 3.5px;
+}
+
+.title-primary-glowing {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 50px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 5px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+  margin-bottom: 2mm;
+}
+
+.ganesha-new-container {
+  width: 102mm; /* Resized to pull footer up to align perfectly with other pages */
+  height: 135mm; /* Resized to pull footer up to align perfectly with other pages */
+  margin: 1.5mm auto;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(229, 184, 66, 0.45);
+  border: 1.5px solid rgba(229, 184, 66, 0.4);
+  z-index: 5;
+  position: relative;
+}
+
+.ganesha-new-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Prevent the gold frame design from being cut off */
+}
+
+/* Real QR Code Images Style */
+.qr-poster-img-real {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 2px;
+}
+
+.shrine-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170mm;
+  height: 170mm;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.halo-svg {
+  width: 100%;
+  height: 100%;
+  animation: slow-rotate 40s linear infinite;
+}
+
+.prabhavali-arch {
+  width: 120mm; /* Wider to show Ganesha fully */
+  height: 125mm;
+  position: relative;
+  border-radius: 6px; /* Devotional photo frame shape */
+  overflow: hidden;
+  box-shadow: 
+    0 18px 45px var(--shadow-dark),
+    0 0 35px rgba(229, 184, 66, 0.45),
+    inset 0 0 30px rgba(0, 0, 0, 0.85);
+  z-index: 3;
+  border: 1.5px solid rgba(229, 184, 66, 0.4);
+}
+
+.prabhavali-overlay-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ganesha-shrine-photo {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: var(--temple-black);
+}
+
+.ganesha-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+.ganesha-poster-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 52%;
+  background: linear-gradient(to top, var(--temple-black) 0%, rgba(27, 0, 3, 0.4) 65%, transparent 100%);
+  z-index: 4;
+}
+
+.temple-lamp {
+  position: absolute;
+  width: 10mm;
+  height: 40mm;
+  z-index: 10;
+}
+
+.lamp-left {
+  bottom: 0mm;
+  left: -8mm;
+}
+
+.lamp-right {
+  bottom: 0mm;
+  right: -8mm;
+}
+
+.lamp-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 8px rgba(229, 184, 66, 0.35));
+}
+
+.invitation-poster-card {
+  max-width: 155mm;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2mm; /* Decreased to avoid overflow */
+}
+
+.invite-msg-gold {
+  font-size: 16.5px;
+  line-height: 1.5; /* Decreased to avoid overflow */
+  color: var(--warm-ivory);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.poster-separator-line {
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, var(--antique-gold), transparent);
+  margin: 2mm auto;
+  width: 100mm;
+}
+
+.poster-org-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2mm; /* Decreased to avoid overflow */
+}
+
+.label-gold {
+  font-size: 11px;
+  letter-spacing: 3.5px;
+  color: var(--antique-gold);
+  font-weight: 600;
+}
+
+.label-gold-small {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--antique-gold);
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.poster-date-highlight {
+  font-family: 'Marcellus', serif;
+  font-size: 32px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+  font-weight: bold;
+  text-shadow: var(--gold-glow);
+}
+
+.venue-block {
+  margin-top: 1mm;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5px;
+}
+
+.poster-mandali-title {
+  font-family: 'Marcellus', serif;
+  font-size: 19px;
+  font-weight: bold;
+  color: var(--champagne-gold);
+  letter-spacing: 3px;
+  text-shadow: var(--gold-glow);
+}
+
+.poster-address {
+  font-size: 12px;
+  color: var(--warm-ivory);
+  opacity: 0.85;
+  letter-spacing: 1px;
+}
+
+/* ----------------------------------------- */
+/* PROGRAMS LAYOUT                           */
+/* ----------------------------------------- */
+.program-poster-layout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.poster-subtitle-box {
+  text-align: center;
+  margin-bottom: 2mm; /* Tighter layout to avoid overflow */
+  z-index: 20;
+}
+
+.subtitle-text {
+  font-family: 'Marcellus', serif;
+  font-size: 15px;
+  color: var(--champagne-gold);
+  letter-spacing: 5px;
+  font-weight: 600;
+  text-shadow: var(--gold-glow);
+}
+
+.poster-programs-grid {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 4mm;
+  z-index: 20;
+}
+
+.page-2 .poster-programs-grid {
+  justify-content: flex-start;
+  gap: 8mm;
+}
+
+.page-2 .program-alcove {
+  padding: 18px 22px;
+}
+
+/* ----------------------------------------- */
+/* Integrated Center Date Header (New)       */
+/* ----------------------------------------- */
+.alcove-date-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 1.2px solid rgba(229, 184, 66, 0.45);
+  background: rgba(229, 184, 66, 0.12);
+  padding: 4px 18px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  box-shadow: 
+    inset 0 0 10px rgba(229, 184, 66, 0.1),
+    0 4px 10px rgba(0, 0, 0, 0.4);
+  align-self: center;
+}
+
+.alcove-date-text {
+  font-family: 'Marcellus', serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--warm-ivory);
+  letter-spacing: 2.5px;
+  text-shadow: 0 0 10px rgba(229, 184, 66, 0.6);
+}
+
+.decor-symbol {
+  color: var(--champagne-gold);
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+/* Temple Shrine Arch Alcove - Modernized Backing */
+.program-alcove {
+  background-color: rgba(27, 0, 3, 0.65);
+  border: 1.8px solid var(--antique-gold);
+  border-radius: 35px 35px 12px 12px;
+  padding: 12px 18px; /* Tighter interior spacing to prevent spillover */
+  box-shadow: 
+    inset 0 0 20px rgba(0,0,0,0.9),
+    0 8px 20px rgba(0, 0, 0, 0.6),
+    var(--gold-glow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Main Sept 14 Alcove */
+.main-alcove {
+  padding-top: 14px;
+}
+
+.main-alcove-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid rgba(229, 184, 66, 0.35);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.alcove-title {
+  font-family: 'Marcellus', serif;
+  font-size: 23px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1.8px;
+  font-weight: bold;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.alcove-time {
+  font-size: 13.5px;
+  font-weight: bold;
+  color: var(--champagne-gold);
+  letter-spacing: 1.5px;
+}
+
+.alcove-desc-center {
+  font-size: 13.5px;
+  text-align: center;
+  line-height: 1.55;
+  color: var(--warm-ivory);
+  opacity: 0.95;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.alcove-sub-programs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.alcove-sub-item {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(229, 184, 66, 0.25);
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  min-height: 22mm;
+}
+
+.alcove-sub-item .bullet-gold {
+  font-size: 15px;
+  margin-top: 1px;
+}
+
+.alcove-sub-item strong {
+  font-family: 'Marcellus', serif;
+  font-size: 12px;
+  color: var(--antique-gold);
+  display: block;
+  letter-spacing: 0.5px;
+}
+
+.alcove-sub-item p {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--warm-ivory);
+  opacity: 0.85;
+  margin-top: 3px;
+}
+
+/* 2x2 Grid of Alcoves for Sept 15–18 */
+.grid-alcoves-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.alcove-title-grid {
+  font-family: 'Marcellus', serif;
+  font-size: 17px;
+  color: var(--champagne-gold);
+  letter-spacing: 1.2px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  border-bottom: 1.2px solid rgba(229, 184, 66, 0.35);
+  padding-bottom: 5px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.alcove-grid-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.event-line-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 8px 12px;
+  border-radius: 4px;
+  border-left: 2.5px solid var(--antique-gold);
+}
+
+.event-line-item .icon {
+  font-size: 16px;
+}
+
+.event-line-item strong {
+  font-family: 'Marcellus', serif;
+  font-size: 15px;
+  color: var(--champagne-gold);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.event-line-item span {
+  font-size: 12.5px;
+  color: rgba(255, 251, 242, 0.85);
+  display: block;
+  margin-top: 1px;
+}
+
+.event-line-item .tag-child {
+  background-color: rgba(229, 184, 66, 0.3);
+  color: var(--warm-ivory);
+  padding: 1px 8px;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 10px;
+}
+
+.event-line-item-single {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.event-line-item-single .icon-large {
+  font-size: 26px;
+  background-color: rgba(229, 184, 66, 0.12);
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: var(--gold-glow);
+}
+
+.event-line-item-single strong {
+  font-family: 'Marcellus', serif;
+  font-size: 16.5px;
+  color: var(--champagne-gold);
+  display: block;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.event-line-item-single .desc {
+  font-size: 13px;
+  opacity: 0.85;
+  color: rgba(255, 251, 242, 0.85);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.categories-capsules {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.categories-capsules span {
+  font-size: 10.5px;
+  background-color: rgba(229, 184, 66, 0.3);
+  color: var(--warm-ivory);
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* ----------------------------------------- */
+/* PAGE 3: PROGRAMS REDESIGN                 */
+/* ----------------------------------------- */
+.split-alcoves-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.split-alcove {
+  min-height: 48mm;
+}
+
+.concert-poster-banner {
+  background-color: rgba(27, 0, 3, 0.6);
+  border: 1.5px solid var(--antique-gold);
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: center;
+  margin-bottom: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), var(--gold-glow);
+}
+
+.concert-poster-banner .banner-tag {
+  font-size: 9px;
+  color: var(--antique-gold);
+  letter-spacing: 1.5px;
+  font-weight: bold;
+}
+
+.concert-poster-banner h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--warm-ivory);
+  margin-top: 2px;
+  font-weight: bold;
+}
+
+.concert-poster-banner p {
+  font-size: 11px;
+  color: var(--champagne-gold);
+  opacity: 0.9;
+}
+
+.event-line-item-simple {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: rgba(255,255,255,0.02);
+  padding: 5px 8px;
+  border-radius: 4px;
+  border-left: 2.5px solid var(--antique-gold);
+}
+
+.event-line-item-simple strong {
+  font-size: 13.5px;
+}
+
+.event-line-item-simple .desc {
+  font-size: 12.5px;
+  opacity: 0.85;
+  color: rgba(255, 251, 242, 0.85);
+}
+
+.alcove-desc-grid-top {
+  font-size: 12.5px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.talents-poster-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  flex-grow: 1;
+  align-content: center;
+}
+
+.talent-capsule {
+  background-color: rgba(229,184,66,0.12);
+  border: 1px solid rgba(229,184,66,0.3);
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'Marcellus', serif;
+  font-size: 13.5px;
+  font-weight: bold;
+  color: var(--champagne-gold);
+  text-align: center;
+  box-shadow: var(--gold-glow);
+}
+
+/* Page 3: Awards Row inside Alcove */
+.alcove-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid rgba(229, 184, 66, 0.2);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.alcove-sub-awards {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alcove-sub-awards strong {
+  color: var(--antique-gold);
+  font-size: 13.5px;
+}
+
+/* Grand Auction Redesign - Glowing Poster Scroll */
+.auction-poster-scroll {
+  background-color: rgba(27, 0, 3, 0.85); /* Integrated dark background */
+  border: 2px solid var(--antique-gold);
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    inset 0 0 15px rgba(229, 184, 66, 0.25),
+    var(--gold-glow);
+  color: var(--warm-ivory); /* Integrated high contrast text */
+  position: relative;
+  margin-top: 4px;
+}
+
+.auction-poster-scroll::before,
+.auction-poster-scroll::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  height: 2px;
+  background-color: var(--antique-gold);
+}
+.auction-poster-scroll::before { top: 4px; }
+.auction-poster-scroll::after { bottom: 4px; }
+
+.scroll-header h3 {
+  font-size: 16px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--gold-glow);
+}
+
+.scroll-subtitle {
+  font-size: 10px;
+  margin-bottom: 6px;
+  color: var(--champagne-gold);
+}
+
+.scroll-items-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scroll-item {
+  font-size: 12.5px;
+  padding-bottom: 2px;
+  border-bottom: 1px dotted rgba(229, 184, 66, 0.25);
+}
+
+.scroll-item .name {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--champagne-gold);
+  display: inline-flex;
+  align-items: center;
+}
+
+.inline-laddu {
+  width: 14px;
+  height: 14px;
+  margin-left: 5px;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+}
+
+.scroll-item .val {
+  font-size: 11px;
+  color: var(--warm-ivory);
+  opacity: 0.85;
+}
+
+/* Page 3: Visually Majestic Grand Finale Centerpiece */
+.finale-poster-alcove {
+  background-color: var(--temple-black);
+  border: 2px solid var(--antique-gold);
+  padding: 12px 18px; /* Tighter vertical spacing */
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.7),
+    0 0 20px rgba(229,184,66,0.4);
+}
+
+.finale-poster-header {
+  margin-bottom: 8px;
+}
+
+.finale-poster-header h2 {
+  font-size: 24px;
+  letter-spacing: 4px;
+}
+
+.finale-events-poster {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.finale-card-poster {
+  display: flex;
+  gap: 12px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(229, 184, 66, 0.3);
+  padding: 12px 16px;
+  border-radius: 6px;
+  align-items: flex-start;
+}
+
+.finale-card-poster .card-icon {
+  font-size: 26px;
+}
+
+.finale-card-poster h3 {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.time-badge {
+  font-size: 10.5px;
+  padding: 2px 8px;
+  background-color: var(--antique-gold);
+  color: var(--dark-brown);
+  font-weight: bold;
+}
+
+.finale-card-poster p {
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+/* ----------------------------------------- */
+/* PAGE 4: SEVA & PARTICIPATION              */
+/* ----------------------------------------- */
+.seva-poster-layout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.seva-intro-block {
+  margin-bottom: 4mm;
+}
+
+.seva-intro-text {
+  font-size: 13.5px;
+  letter-spacing: 3px;
+}
+
+.seva-poster-columns {
+  display: grid;
+  grid-template-columns: 112mm 1fr;
+  gap: 8mm;
+  flex-grow: 1;
+  align-items: stretch;
+}
+
+.seva-poster-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.seva-gateways-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3mm;
+}
+
+/* Premium Seva Doorway Cards */
+.seva-door-card {
+  border: 1.8px solid rgba(229, 184, 66, 0.35);
+  border-left: 5px solid var(--antique-gold);
+  padding: 8px 14px;
+  flex-grow: 1;
+}
+
+.door-header .symbol {
+  font-size: 15px;
+}
+
+.seva-door-card h4 {
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.seva-door-card p {
+  font-size: 12px;
+  line-height: 1.45;
+  margin-top: 2px;
+}
+
+.seva-community-poster-box {
+  padding: 8px 12px;
+  margin-top: 4mm;
+}
+
+.seva-community-poster-box h4 {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+}
+
+.seva-community-poster-box p {
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+/* Right Column QRs & Closing */
+.seva-poster-right {
+  border-left: 1.5px solid rgba(229, 184, 66, 0.3);
+  padding-left: 8mm;
+  justify-content: space-between;
+}
+
+/* QR Code Poster Shield */
+.qr-poster-shield {
+  width: 100%;
+  padding: 12px;
+}
+
+.shield-title {
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+.qr-columns-poster {
+  display: flex;
+  flex-direction: column; /* Stacked vertically */
+  align-items: center;
+  gap: 5mm; /* Vertical spacing gap between QR items */
+  margin-top: 2mm;
+}
+
+.qr-poster-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr-caption {
+  font-size: 12.5px;
+  margin-bottom: 2mm;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.qr-poster-box-container {
+  width: 42mm; /* Increased size */
+  height: 42mm; /* Increased size */
+  border: 1.8px solid var(--antique-gold);
+  border-radius: 10px; /* Blend the curved */
+  overflow: hidden;
+  position: relative;
+  background-color: #1B0003;
+  padding: 1.8mm;
+  box-sizing: border-box;
+}
+
+.qr-center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.5mm; /* Scaled up center logo */
+  height: 9.5mm; /* Scaled up center logo */
+  background-color: var(--warm-ivory); /* Match QR background */
+  border-radius: 5px; /* Blend the curved */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+  border: 1.2px solid var(--antique-gold);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.qr-logo-svg {
+  width: 80%;
+  height: 80%;
+}
+
+.qr-mid-text {
+  font-size: 9px;
+  color: var(--antique-gold);
+  letter-spacing: 1.2px;
+  margin-top: 1.5mm;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Closing Pledge Poster */
+.closing-pledge-poster {
+  margin-top: 4mm;
+}
+
+.pledge-banner {
+  border: 2px solid var(--antique-gold);
+  padding: 8px 6px;
+  margin-bottom: 8px;
+}
+
+.pledge-line {
+  font-size: 14px;
+  letter-spacing: 2.5px;
+}
+
+.pledge-para {
+  font-size: 12px;
+  line-height: 1.45;
+  max-width: 60mm;
+}
+
+/* Page 3 Compression to avoid footer overflow */
+.page-3 .poster-programs-grid {
+  gap: 8px !important;
+}
+
+.page-3 .program-alcove {
+  padding: 8px 12px !important;
+  box-shadow: 
+    inset 0 0 15px rgba(0,0,0,0.85),
+    0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.page-3 .split-alcoves-row {
+  gap: 8px !important;
+}
+
+.page-3 .scroll-items-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 5px !important;
+}
+
+.page-3 .scroll-item {
+  border-bottom: none !important;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 4px 6px !important;
+  border-radius: 4px;
+  border: 1px solid rgba(229, 184, 66, 0.15);
+}
+
+.page-3 .event-line-item-simple {
+  padding: 4px 8px !important;
+}
+
+.page-3 .concert-poster-banner {
+  padding: 6px 8px !important;
+  margin-bottom: 4px !important;
+}
+
+.page-3 .talents-poster-box {
+  gap: 6px !important;
+}
+
+.page-3 .talent-capsule {
+  padding: 6px !important;
+  font-size: 12.5px !important;
+}
+
+.page-3 .finale-poster-header {
+  margin-bottom: 6px !important;
+}
+
+.page-3 .finale-poster-header h2 {
+  font-size: 21px !important;
+}
+
+.page-3 .finale-events-poster {
+  gap: 10px !important;
+}
+
+.page-3 .finale-card-poster {
+  padding: 8px 10px !important;
+  gap: 8px !important;
+}
+
+.page-3 .finale-card-poster p {
+  font-size: 10.5px !important;
+  line-height: 1.35 !important;
+}
+
+/* ----------------------------------------- */
+/* PRINT MEDIA RULES (@media print)          */
+/* ----------------------------------------- */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  
+  body {
+    background-color: var(--temple-black) !important;
+    color: var(--warm-ivory) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .web-toolbar {
+    display: none !important;
+  }
+  
+  .pamphlet-container {
+    padding: 0 !important;
+    gap: 0 !important;
+    background: none !important;
+  }
+  
+  .page {
+    width: 210mm !important;
+    height: 297mm !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Fix for text gradients being invisible when saving PDF or printing */
+  .mantra,
+  .title-primary-glowing,
+  .poster-date-highlight,
+  .alcove-title,
+  .scroll-header h3 {
+    color: var(--antique-gold) !important;
+    -webkit-text-fill-color: var(--antique-gold) !important;
+    background: none !important;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "ganesh-pamphlet",
+  "version": "1.0.0",
+  "description": "Premium 4-page Ganesh Utsav pamphlet print design",
+  "main": "export.js",
+  "type": "module",
+  "scripts": {
+    "export": "node export.js"
+  },
+  "dependencies": {
+    "puppeteer": "^22.10.0"
+  }
+}
